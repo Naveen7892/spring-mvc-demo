@@ -1,0 +1,65 @@
+https://www.springboottutorial.com/spring-boot-crud-rest-service-with-jpa-hibernate
+https://spring.io/guides/gs/rest-service/
+
+https://start.spring.io/
+	Java 8, Maven project
+	Spring Web WEB
+	Spring Data JPA
+	Spring Boot Actuator
+	MySQL Driver
+	
+https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc/9.1.0.jre8-preview
+
+
+All repo package cache stored in C:\Users\naveenkumar\.m2\
+======================================================================
+application.properties:
+------------------------
+server.port=9090
+
+spring.datasource.url=jdbc:sqlserver://localhost;databaseName=springmvc
+spring.datasource.username=admin
+spring.datasource.password=admin
+spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.jpa.show-sql=true
+spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServer2012Dialect
+spring.jpa.hibernate.ddl-auto = create-drop
+
+management.endpoints.web.exposure.include=*
+
+=======================================================================
+
+
+(admin cmd)
+>> netstat -ano | findstr :8080
+>> taskkill /PID 1234 /F
+
+http://localhost:8080/actuator/info
+http://localhost:8080/actuator/health
+
+
+===============================================================
+[
+    {
+        "id": 1,
+        "name": "Naveen",
+        "age": 20
+    },
+    {
+        "id": 2,
+        "name": "Vijayabaskar",
+        "age": 16
+    }
+]
+
+=============================================================================
+MSSQL:
+  SELECT * FROM [springmvc].[dbo].[db1]
+
+  insert into db1 values (1, 20, 'Naveen');
+  insert into db1 values (2, 16, 'Vijayabaskar');
+
+  delete from db1;
+  drop table db1;
+  
+===============================================================================
