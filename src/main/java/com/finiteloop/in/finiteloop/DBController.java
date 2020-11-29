@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/db")
 public class DBController {
-	
+
 	@Autowired
-	public DBService dbService; 
-	
+	public DBService dbService;
+
 	@RequestMapping(value = "/dblist", method = RequestMethod.GET)
-	public List<DB> getName(@RequestParam(defaultValue  = "0", required = false) long id) {
-		if(id == 0) 
+	public List<DB> getName(@RequestParam(defaultValue = "0", required = false) long id) {
+		if (id == 0)
 			return dbService.getDbList();
 		else {
 			List<DB> l = new ArrayList<DB>();
@@ -27,20 +27,20 @@ public class DBController {
 			return l;
 		}
 	}
-	
-//	@RequestMapping(value = "/id", method = RequestMethod.POST)
-//	public DB getId(@RequestBody Long id) {
-//		return dbService.getDb(id);
-//	}
-	
+
+	//	@RequestMapping(value = "/id", method = RequestMethod.POST)
+	//	public DB getId(@RequestBody Long id) {
+	//		return dbService.getDb(id);
+	//	}
+
 	@RequestMapping(value = "/data", method = RequestMethod.POST)
 	public void saveDb(@RequestBody DB db) {
 		dbService.saveDB(db);
 	}
-	
+
 	@RequestMapping(value = "/data", method = RequestMethod.DELETE)
 	public void saveDb(@RequestBody Long id) {
 		dbService.deleteDB(id);
 	}
-	
+
 }

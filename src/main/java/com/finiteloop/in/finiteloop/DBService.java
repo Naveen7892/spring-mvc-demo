@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DBService {
-	
+
 	@Autowired
 	public DBRepository dbRespository;
-	
+
 	public List<DB> getDbList() {
 		return dbRespository.findAll();
 	}
-	
+
 	public DB getDb(long id) {
 		return dbRespository.findById(id);
 	}
@@ -22,7 +22,7 @@ public class DBService {
 	public void saveDB(DB db) {
 		dbRespository.save(db);
 	}
-	
+
 	public void deleteDB(long id) {
 		dbRespository.deleteById(id);
 	}
