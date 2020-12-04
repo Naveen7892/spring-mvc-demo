@@ -1,0 +1,38 @@
+https://dzone.com/articles/running-apache-kafka-on-windows-os
+https://zookeeper.apache.org/releases.html
+https://data-flair.training/blogs/apache-kafka-tutorial/=
+
+https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka/2.6.3
+
+
+>> bin/zookeeper-server-start.sh config/zookeeper.properties
+
+>> bin/kafka-server-start.sh config/server.properties
+
+>> bin/kafka-topics.sh --create --topic demo-topic --bootstrap-server localhost:9092
+
+>> bin/kafka-console-consumer.sh --topic demo-topic --from-beginning --bootstrap-server localhost:9092
+
+>> docker exec -it <container name> /bin/bash
+
+==================================
+>> docker run --name some-zookeeper --restart always -d zookeeper
+
+>> docker network create app-tier --driver bridge
+
+>> docker run -d --name zookeeper-server --network app-tier -e ALLOW_ANONYMOUS_LOGIN=yes bitnami/zookeeper:latest
+
+>> docker run -d --name kafka-server --network app-tier -e ALLOW_PLAINTEXT_LISTENER=yes -e KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181 bitnami/kafka:latest
+
+-- >> docker run -it --rm --network app-tier -e KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181 bitnami/kafka:latest kafka-topics.sh --list --zookeeper zookeeper-server:2181
+
+>> docker run --name kafka -e KAFKA_CFG_ZOOKEEPER_CONNECT=<zookeeper-server-ip>:2181 -e ALLOW_PLAINTEXT_LISTENER=yes -e KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true bitnami/kafka:latest
+
+==================================
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic demo-topic
+
+bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+kafka-console-consumer.bat --zookeeper localhost:2181 --topic demo-topic
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic demo-topic

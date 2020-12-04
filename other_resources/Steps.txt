@@ -37,6 +37,20 @@ management.endpoints.web.exposure.include=*
 http://localhost:8080/actuator/info
 http://localhost:8080/actuator/health
 
+API:
+curl --location --request GET 'http://localhost:9090/db/publishname' --header 'Content-Type: application/json' --data-raw 'naveen'
+
+curl --location --request DELETE 'http://localhost:8080/db/data' --header 'Content-Type: application/json' --data-raw '1'
+
+curl --location --request POST 'http://localhost:8080/db/id?id=3' --data-raw ''
+
+curl --location --request GET 'http://localhost:8080/db/dblist'
+
+curl --location --request POST 'http://localhost:8080/db/data' --header 'Content-Type: application/json' --data-raw '{
+    "name": "NaveenKumar",
+    "age": 25
+}'
+
 
 ===============================================================
 [
